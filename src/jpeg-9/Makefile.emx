@@ -17,7 +17,7 @@ CC = gcc
 THREADING = -Zmt
 
 # You may need to adjust these cc options:
-CFLAGS = -O3 -Wall -I. $(THREADING)
+CFLAGS = -O3 -fomit-frame-pointer -march=i386 -mcpu=pentium -Wall -I. $(THREADING)
 # Generally, we recommend defining any configuration symbols in jconfig.h,
 # NOT via -D switches here.
 
@@ -153,6 +153,7 @@ jconfig.h: jconfig.emx
 	copy jconfig.emx jconfig.h
 
 clean:
+	-$(RM) jconfig.h
 	-$(RM) *.o
 	-$(RM) *.obj
 	-$(RM) cjpeg.exe
